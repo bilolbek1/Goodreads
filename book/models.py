@@ -11,6 +11,10 @@ class Author(models.Model):
     bio = models.TextField()
 
 
+    def __str__(self):
+        return self.first_name
+
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -18,10 +22,18 @@ class Book(models.Model):
     isbn = models.CharField(max_length=17)
 
 
+    def __str__(self):
+        return self.title
+
+
 
 class AuthorBook(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f'{self.book.title} BY {self.author.first_name}'
 
 
 
@@ -33,6 +45,9 @@ class BookReview(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
 
+
+    def __str__(self):
+        return f'{self.star_given} stars for {self.book.title} from {self.user.username}'
 
 
 
