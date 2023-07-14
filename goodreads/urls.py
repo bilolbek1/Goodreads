@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', BaseView, name='base'),
     path('users/', include('users.urls')),
+    path('books/', include('book.urls')),
 ]
