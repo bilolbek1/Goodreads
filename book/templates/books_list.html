@@ -8,10 +8,16 @@
 
 <h1>ALL BOOKS</h1>
 
+{% if book_list %}
     {% for i in book_list %}
-      <a href="{% url "detail" id %}"><h1>{{ i.title }}</h1></a>
+      <a href="{% url "detail" i.id %}"><h1>{{ i.title }}</h1></a>
 
     {% endfor %}
+{% else %}
+    There is no Books.
+
+{% endif %}
+
 
 </body>
 </html>
